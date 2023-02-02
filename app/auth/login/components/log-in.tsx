@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
+import { loginUser, logoutUser } from "@/firebase/authenticate";
 
 function LogInForm() {
   const [formData, setFormData] = useState({
@@ -12,6 +13,12 @@ function LogInForm() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value }); //* [name] is a dynamic key, changed element's name is used as key it updates
     //* the relevant firld of the formData object with the value
+  };
+  const handleLogin = async () => {
+    await loginUser(formData.email, formData.password);
+  };
+  const handleLogOut = async () => {
+    await logoutUser();
   };
 
   return (
@@ -37,8 +44,19 @@ function LogInForm() {
         />
       </div>
 
-      <button type="button" className="border border-black rounded px-2 py-2">
+      <button
+        type="button"
+        className="border border-black rounded px-2 py-2"
+        onClick={handleLogin}
+      >
         Log In
+      </button>
+      <button
+        type="button"
+        className="border border-black rounded px-2 py-2"
+        onClick={handleLogOut}
+      >
+        Log out
       </button>
     </div>
   );

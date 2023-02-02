@@ -16,9 +16,9 @@ function SignUpForm() {
     setFormData({ ...formData, [name]: value }); //* [name] is a dynamic key, changed element's name is used as key it updates
     //* the relevant firld of the formData object with the value
   };
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     if (formData.password === formData.confirmPassword) {
-      signUpUser(formData.email, formData.password);
+      await signUpUser(formData.email, formData.password);
     }
   };
 
