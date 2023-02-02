@@ -58,6 +58,7 @@ function SignUpForm() {
           onChange={handleFormDataChange}
         />
       </div>
+      <button type="button" className="border border-black rounded px-2 py-2">Sign Up</button>
     </div>
   );
 }
