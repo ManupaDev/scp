@@ -17,31 +17,44 @@ function SignUpForm() {
   };
 
   return (
-    <div className="border font-sans border-black mt-4">
+    <div className=" font-sans border-black mt-4">
       <div>
         <h1 className="font-semibold text-xl">Username</h1>
         <input
           type="text"
           name="username"
           value={formData["username"]}
+          className="border border-black rounded text-xl"
           onChange={handleFormDataChange}
         />
       </div>
-      <div>
+      <div className="my-4">
+        <h1 className="font-semibold text-xl">Email</h1>
+        <input
+          type="email"
+          name="email"
+          value={formData["email"]}
+          className="border border-black rounded text-xl"
+          onChange={handleFormDataChange}
+        />
+      </div>
+      <div className="my-4">
         <h1 className="font-semibold text-xl">Password</h1>
         <input
           type="password"
           name="password"
           value={formData["password"]}
+          className="border border-black rounded text-xl"
           onChange={handleFormDataChange}
         />
       </div>
-      <div>
+      <div className="my-4">
         <h1 className="font-semibold text-xl">Confirm Password</h1>
         <input
           type="confirmPassword"
           name="confirmPassword"
           value={formData["confirmPassword"]}
+          className="border border-black rounded text-xl"
           onChange={handleFormDataChange}
         />
       </div>
