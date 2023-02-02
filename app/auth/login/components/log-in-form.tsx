@@ -20,9 +20,6 @@ function LogInForm() {
     await loginUser(formData.email, formData.password);
     router.push("/");
   };
-  const handleLogOut = async () => {
-    await logoutUser();
-  };
 
   return (
     <div className=" font-sans border-black mt-4">
@@ -53,13 +50,6 @@ function LogInForm() {
         onClick={handleLogin}
       >
         Log In
-      </button>
-      <button
-        type="button"
-        className="border border-black rounded px-2 py-2"
-        onClick={handleLogOut}
-      >
-        Log out
       </button>
     </div>
   );
