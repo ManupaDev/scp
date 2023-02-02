@@ -1,5 +1,6 @@
 import {
   getAuth,
+  Auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -33,4 +34,18 @@ export const logoutUser = async () => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const getCurrentUser = async () => {
+  const promisifiedOnAuthStateChanged = (auth: Auth) => {
+    return new Promise((resolve, reject) => {
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          resolve(user);
+        } else {
+          resolve(null);
+        }
+      });
+    });
+  };
 };

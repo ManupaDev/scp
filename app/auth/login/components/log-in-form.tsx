@@ -2,8 +2,10 @@
 
 import { ChangeEvent, useState } from "react";
 import { loginUser, logoutUser } from "@/firebase/authenticate";
+import { useRouter } from "next/navigation";
 
 function LogInForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,6 +18,7 @@ function LogInForm() {
   };
   const handleLogin = async () => {
     await loginUser(formData.email, formData.password);
+    router.push("/");
   };
   const handleLogOut = async () => {
     await logoutUser();

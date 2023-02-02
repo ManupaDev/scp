@@ -2,8 +2,10 @@
 
 import { ChangeEvent, useState } from "react";
 import { signUpUser } from "@/firebase/authenticate";
+import { useRouter } from "next/navigation";
 
 function SignUpForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -19,6 +21,7 @@ function SignUpForm() {
   const handleSignUp = async () => {
     if (formData.password === formData.confirmPassword) {
       await signUpUser(formData.email, formData.password);
+      router.push("/");
     }
   };
 
