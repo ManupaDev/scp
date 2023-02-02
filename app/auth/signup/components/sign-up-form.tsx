@@ -1,6 +1,7 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
+import { signUpUser } from "@/firebase/authenticate";
 
 function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,11 @@ function SignUpForm() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value }); //* [name] is a dynamic key, changed element's name is used as key it updates
     //* the relevant firld of the formData object with the value
+  };
+  const handleSignUp = () => {
+    if (formData.password === formData.confirmPassword) {
+      signUpUser(formData.email, formData.password);
+    }
   };
 
   return (
@@ -51,14 +57,20 @@ function SignUpForm() {
       <div className="my-4">
         <h1 className="font-semibold text-xl">Confirm Password</h1>
         <input
-          type="confirmPassword"
+          type="password"
           name="confirmPassword"
           value={formData["confirmPassword"]}
           className="border border-black rounded text-xl"
           onChange={handleFormDataChange}
         />
       </div>
-      <button type="button" className="border border-black rounded px-2 py-2">Sign Up</button>
+      <button
+        type="button"
+        className="border border-black rounded px-2 py-2"
+        onClick={handleSignUp}
+      >
+        Sign Up
+      </button>
     </div>
   );
 }
